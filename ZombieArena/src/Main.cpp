@@ -44,7 +44,34 @@ int main()
 	// Our main game loop
 	while (window.isOpen())
 	{
-		
+		// Handle input
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::KeyPressed)
+			{
+				// Pause the game while playing
+				if (event.key.code == sf::Keyboard::Return && state == State::PLAYING)
+				{
+					state = State::PAUSED;
+				}
+				else if (event.key.code == sf::Keyboard::Return && state == State::PAUSED) // Start playing again
+				{
+					state == State::PLAYING;
+					// Reset the clock so there isn't a frame jump
+					clock.restart();
+				}
+				else if (event.key.code == sf::Keyboard::Return && state == State::GAME_OVER) // start a new game in GAME_OVER state
+				{
+					state = State::LEVELING_UP;
+				}
+
+				if (state == State::PLAYING)
+				{
+
+				}
+			}
+		}
 	}
 
 	return 0;

@@ -27,7 +27,7 @@ int main()
 	sf::Clock clock;
 
 	// How long has the PLAYING state been active
-	sf::Time getTimeTotal;
+	sf::Time gameTimeTotal;
 
 	// Mouse relation to the world coordinates
 	sf::Vector2f mouseWorldPosition;
@@ -44,7 +44,12 @@ int main()
 	// Our main game loop
 	while (window.isOpen())
 	{
-		// Handle input
+		/*
+		************
+		HANDLE INPUT
+		************
+		*/
+		// Handle events by polling
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -120,6 +125,88 @@ int main()
 			}
 		}
 
+		// Handle the LEVELING state
+		if (state == State::LEVELING_UP)
+		{
+			if (event.key.code == sf::Keyboard::Num1)
+			{
+				state = State::PLAYING;
+			}
+			
+			if (event.key.code == sf::Keyboard::Num2)
+			{
+				state = State::PLAYING;
+			}
+			
+			if (event.key.code == sf::Keyboard::Num3)
+			{
+				state = State::PLAYING;
+			}
+			
+			if (event.key.code == sf::Keyboard::Num4)
+			{
+				state = State::PLAYING;
+			}
+			
+			if (event.key.code == sf::Keyboard::Num5)
+			{
+				state = State::PLAYING;
+			}
+			
+			if (event.key.code == sf::Keyboard::Num6)
+			{
+				state = State::PLAYING;
+			}
+
+			if (state == State::PLAYING)
+			{
+				// Prepare the level
+				arena.width = 500;
+				arena.height = 500;
+				arena.left = 0;
+				arena.top = 0;
+
+				int tileSize = 50;
+
+				// Spawn the player int he middle of the arena
+				player.spawn(arena, resolution, tileSize);
+
+				// Reset the clock so there isn't a fram jump
+				clock.restart();
+			}
+		}
+
+		/*
+		****************
+		UPDATE THE FRAME
+		****************
+		*/
+		if (state == State::PLAYING)
+		{
+			// Update the delta time
+			sf::Time dt = clock.restart();
+			
+			// Update our total game time
+			gameTimeTotal += dt;
+
+			// Make a decimal fraction of 1 from the delta time
+			float dtAsSeconds = dt.asSeconds();
+
+			// Where is the mouse pointer currently
+			mouseScreenPosition = sf::Mouse::getPosition();
+
+			// Convert the mouse position into world coordinates of the mainView
+			mouseWorldPosition = window.mapPixelToCoords(sf::Mouse::getPosition(), mainView);
+
+			// Update our player
+			player.update(dtAsSeconds, sf::Mouse::getPosition());
+
+			// Store the players new position
+			sf::Vector2f playerPosition(player.getCenter());
+
+			// Make the view center around the player
+			mainView.setCenter(player.getCenter());
+		}
 
 	}
 

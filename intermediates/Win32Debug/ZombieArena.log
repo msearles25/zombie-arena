@@ -1,0 +1,61 @@
+﻿  Main.cpp
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Main.cpp(18,48): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Main.cpp(19,48): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Main.cpp(21,64): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Main.cpp(21,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Main.cpp(60,12): warning C4553: '==': result of expression not used; did you intend '='?
+  Player.cpp
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(7,13): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(8,16): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(22,29): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(23,30): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(42,13): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(43,16): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(157,32): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(162,31): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(167,33): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(172,30): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(186,31): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\ZombieArena\src\Player\Player.cpp(192,36): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  ZombieArena.vcxproj -> C:\Users\fuck micro$hit\source\repos\SFMLGames\ZombieArena\\bin\Win32Debug\ZombieArena.exe

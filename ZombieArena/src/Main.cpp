@@ -72,6 +72,55 @@ int main()
 				}
 			}
 		}
+
+		// Handle the player quitting the game
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			window.close();
+		}
+
+		// Handle our WASD inputs while playing
+		if (state == State::PLAYING)
+		{
+			// Handling pressing and releasing of the WASD keys
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+			{
+				player.moveUp();
+			}
+			else
+			{
+				player.stopUp();
+			}
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+			{
+				player.moveDown();
+			}
+			else
+			{
+				player.stopDown();
+			}
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+			{
+				player.moveLeft();
+			}
+			else
+			{
+				player.stopLeft();
+			}
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+			{
+				player.moveRight();
+			}
+			else
+			{
+				player.stopRight();
+			}
+		}
+
+
 	}
 
 	return 0;

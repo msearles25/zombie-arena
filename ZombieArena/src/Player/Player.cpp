@@ -1,3 +1,4 @@
+#include <math.h>
 #include "Player.h"
 
 Player::Player()
@@ -172,9 +173,32 @@ void Player::update(float elapsedTime, sf::Vector2i mousePosition)
 	}
 
 	// Calculate the angle that the player is facing
-	float angle{ (atan2(
+	float angle{ (float)(atan2(
 		mousePosition.y - m_Resolution.y / 2, 
 		mousePosition.x - m_Resolution.x / 2) * 180) / 3.141 };
 
 	m_Sprite.setRotation(angle);
+}
+
+void Player::upgradeSpeed()
+{
+	// 20% increase to the player speed
+	m_Speed += (START_SPEED * .2);
+}
+
+void Player::upgradeHealth()
+{
+	// 20% updgrade to the player health
+	m_MaxHealth += (START_HEALTH * .2);
+}
+
+void Player::increaseHealthLevel(int amount)
+{
+	m_Health += amount;
+
+	// Check if it's above the max health
+	if (m_Health > m_MaxHealth)
+	{
+		m_Health = m_MaxHealth;
+	}
 }

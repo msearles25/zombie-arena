@@ -60,3 +60,28 @@ bool Player::hit(sf::Time timeHit)
 		return false;
 	}
 }
+
+sf::FloatRect Player::getPosition()
+{
+	return m_Sprite.getGlobalBounds();
+}
+
+sf::Vector2f Player::getCenter()
+{
+	return m_Position;
+}
+
+float Player::getRotation()
+{
+	return m_Sprite.getRotation();
+}
+
+sf::Sprite Player::getSprite()
+{
+	return m_Sprite;
+}
+
+int Player::getHealth()
+{
+	return m_Health;
+}

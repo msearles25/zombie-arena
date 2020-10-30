@@ -35,7 +35,7 @@ public:
 
 	void spawn(sf::IntRect arena, sf::Vector2f resolution, int tileSize);
 
-	void resetPlayerState();										// Call at the end of every game
+	void resetPlayerStats();										// Call at the end of every game
 
 	bool hit(sf::Time timeHit);										// Handle the player getting hit by a zombie
 	sf::Time getLastHitTime();										// How long since the player was last hit

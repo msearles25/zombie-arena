@@ -41,3 +41,22 @@ void Player::resetPlayerStats()
 	m_Health = START_HEALTH;
 	m_MaxHealth = START_HEALTH;
 }
+
+sf::Time Player::getLastHitTime()
+{
+	return m_LastHit;
+}
+
+bool Player::hit(sf::Time timeHit)
+{
+	if (timeHit.asMilliseconds() - m_LastHit.asMilliseconds() > 200)
+	{
+		m_LastHit = timeHit;
+		m_Health -= 10;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

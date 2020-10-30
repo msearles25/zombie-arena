@@ -1,5 +1,3 @@
-Something like a pong clone.
-
 A quick project to learn some aspects about game development.
 
 ### How to compile ###

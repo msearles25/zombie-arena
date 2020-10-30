@@ -8,7 +8,7 @@ Player::Player()
 	m_MaxHealth = START_HEALTH;
 
 	// Associating a texture with our sprite
-	m_Texture.loadFromFile("../../grpahics/player.png");
+	m_Texture.loadFromFile("assets/graphics/player.png");
 	m_Sprite.setTexture(m_Texture);
 
 	// Set the origin of the sprite to the center

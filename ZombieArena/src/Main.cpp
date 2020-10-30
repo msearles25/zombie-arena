@@ -208,6 +208,39 @@ int main()
 			mainView.setCenter(player.getCenter());
 		}
 
+		/*
+		**************
+		DRAW THE SCENE
+		**************
+		*/
+		if (state == State::PLAYING)
+		{
+			window.clear();
+			
+			// Set the mainView to be displayed in the window 
+			// then draw everything related to it
+			window.setView(mainView);
+			
+			// Draw the player
+			window.draw(player.getSprite());
+		}
+		
+		if (state == State::LEVELING_UP)
+		{
+
+		}
+		
+		if (state == State::PAUSED)
+		{
+
+		}
+		
+		if (state == State::GAME_OVER)
+		{
+
+		}
+
+		window.display();
 	}
 
 	return 0;

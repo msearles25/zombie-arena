@@ -53,3 +53,19 @@ void Pickup::spawn()
 
 	m_Sprite.setPosition(x, y);
 }
+
+sf::FloatRect Pickup::getPosition()
+{
+	return m_Sprite.getGlobalBounds();
+}
+
+sf::Sprite Pickup::getSprite()
+{
+	return m_Sprite;
+}
+
+bool Pickup::isSpawned()
+{
+	return m_Spawned;
+}
+

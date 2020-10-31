@@ -14,4 +14,4 @@ sfml-window-d.lib
 sfml-system-d.lib
 sfml-network-d.lib
 sfml-audio-d.lib
-6. Grab the .dll's from your SFML-2.5.1\bin folder, put them into the root directory of this project.
+6. Grab the .dll's from your SFML-2.5.1\bin folder, put them into the ZombieArena folder.

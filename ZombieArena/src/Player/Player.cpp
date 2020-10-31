@@ -1,5 +1,6 @@
 #include <math.h>
 #include "Player.h"
+#include "../TextureHolder/TextureHolder.h"
 
 Player::Player()
 {
@@ -8,8 +9,7 @@ Player::Player()
 	m_MaxHealth = START_HEALTH;
 
 	// Associating a texture with our sprite
-	m_Texture.loadFromFile("assets/graphics/player.png");
-	m_Sprite.setTexture(m_Texture);
+	m_Sprite = sf::Sprite(TextureHolder::GetTexture("assets/graphics/player.png"));
 
 	// Set the origin of the sprite to the center
 	// for a smooth rotation

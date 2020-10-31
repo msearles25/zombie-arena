@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Pickup\Pickup.cpp" />
     <ClCompile Include="src\Bullet\Bullet.cpp" />
     <ClCompile Include="src\UtilFuncs\CreateBackground.cpp" />
     <ClCompile Include="src\Player\Player.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="src\Zombie\Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Pickup\Pickup.h" />
     <ClInclude Include="src\Bullet\Bullet.h" />
     <ClInclude Include="src\Main.h" />
     <ClInclude Include="src\Player\Player.h" />

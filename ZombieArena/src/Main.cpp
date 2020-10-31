@@ -327,6 +327,15 @@ int main()
 				window.draw(zombies[i].getSprite());
 			}
 
+			// Draw the bullets
+			for (int i{ 0 }; i < 100; i++)
+			{
+				if (bullets[i].isInFlight())
+				{
+					window.draw(bullets[i].getShape());
+				}
+			}
+
 			// Draw the player
 			window.draw(player.getSprite());
 		}

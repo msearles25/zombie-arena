@@ -42,6 +42,9 @@
     <ClCompile Include="src\UtilFuncs\CreateHorde.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Bullet\Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Player\Player.h">
@@ -54,6 +57,9 @@
       <Filter>Source Files\TextureHolder</Filter>
     </ClInclude>
     <ClInclude Include="src\Zombie\Zombie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Bullet\Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

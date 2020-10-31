@@ -118,7 +118,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\libs\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;sfml-network-s.lib;sfml-audio-s.lib;sfml-main.lib;opengl32.lib;freetype.lib;winmm.lib;openal32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bullet\Bullet.cpp" />
     <ClCompile Include="src\UtilFuncs\CreateBackground.cpp" />
     <ClCompile Include="src\Player\Player.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="src\Zombie\Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Bullet\Bullet.h" />
     <ClInclude Include="src\Main.h" />
     <ClInclude Include="src\Player\Player.h" />
     <ClInclude Include="src\TextureHolder\TextureHolder.h" />

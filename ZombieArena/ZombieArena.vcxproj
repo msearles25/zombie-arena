@@ -154,10 +154,14 @@
     <ClCompile Include="src\Background\CreateBackground.cpp" />
     <ClCompile Include="src\Player\Player.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\TextureHolder\TextureHolder.cpp" />
+    <ClCompile Include="src\Zombie\Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Main.h" />
     <ClInclude Include="src\Player\Player.h" />
+    <ClInclude Include="src\TextureHolder\TextureHolder.h" />
+    <ClInclude Include="src\Zombie\Zombie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

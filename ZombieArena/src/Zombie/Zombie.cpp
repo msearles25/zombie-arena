@@ -65,3 +65,18 @@ bool Zombie::hit()
 	// injured but not dead yet
 	return false;
 }
+
+bool Zombie::isAlive()
+{
+	return m_Alive;
+}
+
+sf::FloatRect Zombie::getPosition()
+{
+	return m_Sprite.getGlobalBounds();
+}
+
+sf::Sprite Zombie::getSprite()
+{
+	return m_Sprite;
+}

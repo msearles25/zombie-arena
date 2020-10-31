@@ -13,8 +13,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Player">
+    <Filter Include="Source Files\TextureHolder">
+      <UniqueIdentifier>{f6bb6a58-50e9-4262-859b-4d9434ab97d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player">
       <UniqueIdentifier>{be4fc3bb-b3cf-4394-afe7-6f8df263db44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CreateBackground">
+      <UniqueIdentifier>{6a29817d-f0ef-486d-b61d-00fca67dd547}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -22,17 +28,29 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Player\Player.cpp">
-      <Filter>Player</Filter>
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextureHolder\TextureHolder.cpp">
+      <Filter>Source Files\TextureHolder</Filter>
     </ClCompile>
     <ClCompile Include="src\Background\CreateBackground.cpp">
+      <Filter>Source Files\CreateBackground</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Zombie\Zombie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Player\Player.h">
-      <Filter>Player</Filter>
+      <Filter>Source Files\Player</Filter>
     </ClInclude>
     <ClInclude Include="src\Main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TextureHolder\TextureHolder.h">
+      <Filter>Source Files\TextureHolder</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Zombie\Zombie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

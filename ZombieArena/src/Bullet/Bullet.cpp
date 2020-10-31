@@ -49,3 +49,24 @@ void Bullet::shoot(float startX, float startY, float targetX, float targetY)
 	// Position the bullet ready to be drawn
 	m_BulletShape.setPosition(m_Position);
 }
+
+void Bullet::stop()
+{
+	m_InFlight = false;
+}
+
+bool Bullet::isInFlight()
+{
+	return m_InFlight;
+}
+
+sf::FloatRect Bullet::getPosition()
+{
+	return m_BulletShape.getGlobalBounds();
+}
+
+sf::RectangleShape Bullet::getShape()
+
+{
+	return m_BulletShape;
+}

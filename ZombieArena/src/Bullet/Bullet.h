@@ -43,7 +43,7 @@ public:
 	sf::FloatRect getPosition();
 
 	// Return the actual shape of the bullet
-	sf::RectangleShape getShap();
+	sf::RectangleShape getShape();
 
 	// Update the bullet each frame
 	void update(float elapsedTime);

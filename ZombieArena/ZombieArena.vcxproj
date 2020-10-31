@@ -151,10 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Background\CreateBackground.cpp" />
+    <ClCompile Include="src\UtilFuncs\CreateBackground.cpp" />
     <ClCompile Include="src\Player\Player.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\TextureHolder\TextureHolder.cpp" />
+    <ClCompile Include="src\UtilFuncs\CreateHorde.cpp" />
     <ClCompile Include="src\Zombie\Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>

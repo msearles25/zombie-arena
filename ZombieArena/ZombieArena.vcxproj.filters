@@ -33,10 +33,13 @@
     <ClCompile Include="src\TextureHolder\TextureHolder.cpp">
       <Filter>Source Files\TextureHolder</Filter>
     </ClCompile>
-    <ClCompile Include="src\Background\CreateBackground.cpp">
+    <ClCompile Include="src\Zombie\Zombie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UtilFuncs\CreateBackground.cpp">
       <Filter>Source Files\CreateBackground</Filter>
     </ClCompile>
-    <ClCompile Include="src\Zombie\Zombie.cpp">
+    <ClCompile Include="src\UtilFuncs\CreateHorde.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

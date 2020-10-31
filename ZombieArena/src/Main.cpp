@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "Bullet/Bullet.h"
 #include "Main.h"
 #include "Player/Player.h"
 #include "TextureHolder/TextureHolder.h"
@@ -55,6 +56,17 @@ int main()
 	int numZombiesAlive;
 	Zombie *zombies{ nullptr };
 
+	// Prepare the bullets
+	Bullet bullets[100];
+	int currentBullet{ 0 };
+	int bulletsSpare{ 24 };
+	int bulletsInMag{ 6 };
+	int magSize{ 6 };
+	float fireRate{ 1 };
+
+	// when was the fire button last pressed
+	sf::Time lastPressed;
+
 	// Our main game loop
 	while (window.isOpen())
 	{
@@ -87,7 +99,26 @@ int main()
 
 				if (state == State::PLAYING)
 				{
+					// Reloading
+					if (event.key.code == sf::Keyboard::R)
+					{
+						if (bulletsSpare >= magSize)
+						{
+							// Plenty of bullets to reload
+							bulletsInMag = magSize;
+							bulletsSpare -= magSize;
+						}
+						else if (bulletsSpare > 0)
+						{
+							// only a few bullets
+							bulletsInMag = bulletsSpare;
+							bulletsSpare = 0;
+						}
+						else
+						{
 
+						}
+					}
 				}
 			}
 		}

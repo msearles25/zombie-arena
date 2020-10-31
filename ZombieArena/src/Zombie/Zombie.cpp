@@ -1,5 +1,6 @@
 #include <ctime>
 #include <cstdlib>
+#include <math.h>
 #include "../TextureHolder/TextureHolder.h"
 #include "Zombie.h"
 
@@ -79,4 +80,40 @@ sf::FloatRect Zombie::getPosition()
 sf::Sprite Zombie::getSprite()
 {
 	return m_Sprite;
+}
+
+void Zombie::update(float elapsedTime, sf::Vector2f playerLocation)
+{
+	float playerX = playerLocation.x;
+	float playerY = playerLocation.y;
+
+	// Update the zombis position
+	if (playerX > m_Position.x)
+	{
+		m_Position.x += m_Speed * elapsedTime;
+	}
+
+	if (playerY > m_Position.y)
+	{
+		m_Position.y += m_Speed * elapsedTime;
+	}
+
+	if (playerX < m_Position.x)
+	{
+		m_Position.x -= m_Speed * elapsedTime;
+	}
+
+	if (playerY < m_Position.y)
+	{
+		m_Position.y -= m_Speed * elapsedTime;
+	}
+
+	// Move the sprite
+	m_Sprite.setPosition(m_Position);
+
+	// Face the sprite in the correct direction
+	float angle = (std::atan2(playerY - m_Position.y,
+		playerX - m_Position.x) * 180) / 3.141f;
+
+	m_Sprite.setRotation(angle);
 }

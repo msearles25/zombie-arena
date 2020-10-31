@@ -77,7 +77,7 @@ int main()
 				}
 				else if (event.key.code == sf::Keyboard::Return && state == State::PAUSED) // Start playing again
 				{
-					state == State::PLAYING;
+					state = State::PLAYING;
 					// Reset the clock so there isn't a frame jump
 					clock.restart();
 				}

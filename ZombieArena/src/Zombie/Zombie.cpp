@@ -33,10 +33,13 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 
 	// Modify the speed to make the zombie unique
 	// Speed modifier
-	std::srand((int)time(0) * seed);
+	srand((int)time(0) * seed);
 
 	// Somewhere between 80 and 100
-	float modifier = (std::rand() % MAX_VARRIANCE) + OFFSET;	
+	float modifier = (rand() % MAX_VARRIANCE) + OFFSET;	
+
+	// Express it as a fraction of 1
+	modifier /= 100; //now it's between .7 and 1
 	m_Speed *= modifier;
 
 	// Initialize it's location
@@ -90,22 +93,22 @@ void Zombie::update(float elapsedTime, sf::Vector2f playerLocation)
 	// Update the zombis position
 	if (playerX > m_Position.x)
 	{
-		m_Position.x += m_Speed * elapsedTime;
+		m_Position.x = m_Position.x + m_Speed * elapsedTime;
 	}
 
 	if (playerY > m_Position.y)
 	{
-		m_Position.y += m_Speed * elapsedTime;
+		m_Position.y = m_Position.y + m_Speed * elapsedTime;
 	}
 
 	if (playerX < m_Position.x)
 	{
-		m_Position.x -= m_Speed * elapsedTime;
+		m_Position.x = m_Position.x - m_Speed * elapsedTime;
 	}
 
 	if (playerY < m_Position.y)
 	{
-		m_Position.y -= m_Speed * elapsedTime;
+		m_Position.y = m_Position.y - m_Speed * elapsedTime;
 	}
 
 	// Move the sprite

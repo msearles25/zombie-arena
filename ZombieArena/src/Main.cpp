@@ -294,6 +294,15 @@ int main()
 					zombies[i].update(dt.asSeconds(), playerPosition);
 				}
 			}
+
+			// Update any bullets that are currenlty in flight
+			for (int i{ 0 }; i < 100; i++)
+			{
+				if (bullets[i].isInFlight())
+				{
+					bullets[i].update(dtAsSeconds);
+				}
+			}
 		}
 
 		/*

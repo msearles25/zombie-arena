@@ -2,7 +2,8 @@
 
 Bullet::Bullet()
 {
-	m_BulletShape.setSize(sf::Vector2f(2, 2));
+	m_BulletShape.setSize(sf::Vector2f(2, 4));
+	m_BulletShape.setFillColor(sf::Color::Red);
 }
 
 void Bullet::shoot(float startX, float startY, float targetX, float targetY)
@@ -75,7 +76,7 @@ void Bullet::update(float elapsedTime)
 {
 	// Update the bullets position
 	m_Position.x += m_BulletDistanceX + elapsedTime;
-	m_Position.y + -m_BulletDistanceY + elapsedTime;
+	m_Position.y += m_BulletDistanceY + elapsedTime;
 
 	// Move the bullet to that location
 	m_BulletShape.setPosition(m_Position);

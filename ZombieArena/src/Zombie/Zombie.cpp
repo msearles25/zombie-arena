@@ -48,3 +48,20 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 	// Set its position
 	m_Sprite.setPosition(m_Position);
 }
+
+bool Zombie::hit()
+{
+	m_Health--;
+	
+	if (m_Health <= 0)
+	{
+		// Dead
+		m_Alive = false;
+		m_Sprite.setTexture(TextureHolder::GetTexture("graphics/blood.png"));
+
+		return true;
+	}
+
+	// injured but not dead yet
+	return false;
+}

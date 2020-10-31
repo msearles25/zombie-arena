@@ -168,6 +168,30 @@ int main()
 			{
 				player.stopRight();
 			}
+
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				if (gameTimeTotal.asMilliseconds() - 
+					lastPressed.asMilliseconds() >
+					1000 / fireRate && bulletsInMag > 0)
+				{
+					// Pass the center of the player and the center of the crosshair
+					// to the shoot function
+					bullets[currentBullet].shoot(
+						player.getCenter().x, player.getCenter().y,
+						mouseWorldPosition.x, mouseWorldPosition.y);
+
+					currentBullet++;
+
+					if (currentBullet > 99)
+					{
+						currentBullet = 0;
+					}
+					lastPressed = gameTimeTotal;
+
+					bulletsInMag--;
+				}
+			}
 		}
 
 		// Handle the LEVELING state

@@ -69,3 +69,36 @@ bool Pickup::isSpawned()
 	return m_Spawned;
 }
 
+int Pickup::gotIt()
+{
+	m_Spawned = false;
+	m_SecondsSinceDespawn = 0;
+	return m_Value;
+}
+
+void Pickup::update(float elapsedTime)
+{
+	if (m_Spawned)
+	{
+		m_SecondsSinceSpawn += elapsedTime;
+	}
+	else
+	{
+		m_SecondsSinceDespawn += elapsedTime;
+	}
+
+	// Do we need to hide the pickup?
+	if (m_SecondsSinceSpawn > m_SecondsToLive && m_Spawned)
+	{
+		// Remove the pickup and put it somewhere else
+		m_Spawned = false;
+		m_SecondsSinceDespawn = 0;
+	}
+
+	// Do we need to spawn a pickup?
+	if (m_SecondsSinceDespawn > m_SecondsToWait && !m_Spawned)
+	{
+		// spawn the new pickup and reset the timer
+		spawn();
+	}
+}

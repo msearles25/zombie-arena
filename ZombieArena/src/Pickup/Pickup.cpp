@@ -28,3 +28,28 @@ Pickup::Pickup(int type)
 	m_SecondsToWait = START_WAIT_TIME;
 }
 
+void Pickup::setArena(sf::IntRect arena)
+{
+	// Copy the arena details into the pickup m_Arena
+	m_Arena.left = arena.left + 50;
+	m_Arena.width = arena.width - 50;
+	m_Arena.top = arena.top + 50;
+	m_Arena.height = arena.height - 50;
+
+	spawn();
+}
+
+void Pickup::spawn()
+{
+	// Spawn at a random location
+	srand((int)time(0) / m_Type);
+	int x{ (rand() % m_Arena.width) };
+	
+	srand((int)time(0) * m_Type);
+	int y{ (rand() % m_Arena.height) };
+
+	m_SecondsSinceSpawn = 0;
+	m_Spawned = true;
+
+	m_Sprite.setPosition(x, y);
+}

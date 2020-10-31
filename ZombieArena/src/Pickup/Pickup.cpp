@@ -102,3 +102,19 @@ void Pickup::update(float elapsedTime)
 		spawn();
 	}
 }
+
+void Pickup::upgrade()
+{
+	if (m_Type == 1)
+	{
+		m_Value += (HEALTH_START_VALUE * .5);
+	}
+	else
+	{
+		m_Value += (AMMO_START_VALUE * .5);
+	}
+
+	// Make them more frequent and last longer
+	m_SecondsToLive += (START_SECONDS_TO_LIVE / 10);
+	m_SecondsToWait -= (START_WAIT_TIME / 10);
+}

@@ -2,7 +2,7 @@
 
 Bullet::Bullet()
 {
-	m_BulletShape.setSize(sf::Vector2f(2, 4));
+	m_BulletShape.setSize(sf::Vector2f(10, 20));
 	m_BulletShape.setFillColor(sf::Color::Red);
 }
 

@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "Main.h"
 #include "Player/Player.h"
 
 int main()
@@ -40,6 +41,12 @@ int main()
 
 	// Boundaries of our arena
 	sf::IntRect arena;
+
+	// Create the background 
+	sf::VertexArray background;
+	// Load the texture for our background vertex array
+	sf::Texture backgroundTexture;
+	backgroundTexture.loadFromFile("assets/graphics/background_sheet.png");
 
 	// Our main game loop
 	while (window.isOpen())
@@ -166,7 +173,9 @@ int main()
 				arena.left = 0;
 				arena.top = 0;
 
-				int tileSize = 50;
+				// Pass the vertex array by reference
+				// to the createBackground function
+				int tileSize{ CreateBackground(background, arena) };
 
 				// Spawn the player int he middle of the arena
 				player.spawn(arena, resolution, tileSize);
@@ -221,6 +230,9 @@ int main()
 			// then draw everything related to it
 			window.setView(mainView);
 			
+			// Draw the Background
+			window.draw(background, &backgroundTexture);
+
 			// Draw the player
 			window.draw(player.getSprite());
 		}

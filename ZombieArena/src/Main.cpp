@@ -416,9 +416,11 @@ int main()
 
 			if (state == State::PLAYING)
 			{
+				wave++;
+
 				// Prepare the level
-				arena.width = 500;
-				arena.height = 500;
+				arena.width = 500 * wave;
+				arena.height = 500 * wave;
 				arena.left = 0;
 				arena.top = 0;
 
@@ -434,12 +436,14 @@ int main()
 				ammoPickup.setArena(arena);
 
 				// Create a horde of zombies
-				numZombies = 10;
+				numZombies = 5 * wave;
 
 				// Delete the previously allocated memory(if it exists) to not cause a memory leak
 				delete[] zombies;
 				zombies = createHorde(numZombies, arena);
 				numZombiesAlive = numZombies;
+
+				powerup.play();
 
 				// Reset the clock so there isn't a fram jump
 				clock.restart();

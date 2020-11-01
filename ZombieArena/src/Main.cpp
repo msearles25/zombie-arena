@@ -182,6 +182,12 @@ int main()
 	healthBar.setFillColor(sf::Color::Red);
 	healthBar.setPosition(450, 980);
 
+	// When did we last update the hud?
+	int frameSinceLastHUDUpdate{ 0 };
+
+	// How often (in frames) should the hud be updated?
+	int fpsMeasurementFrameInterval{ 1000 };
+
 	// Our main game loop
 	while (window.isOpen())
 	{
@@ -493,6 +499,46 @@ int main()
 			if (player.getPosition().intersects(ammoPickup.getPosition()) && ammoPickup.isSpawned())
 			{
 				bulletsSpare += ammoPickup.gotIt();
+			}
+
+			// hud updates
+			// Set the size of the health bar
+			healthBar.setSize(sf::Vector2f(player.getHealth() * 3, 50));
+
+			// Increment the number of frames since previous update
+			frameSinceLastHUDUpdate++;
+
+			// re-calc every fpsMeasurementFrameInterval frames
+			if (frameSinceLastHUDUpdate > fpsMeasurementFrameInterval)
+			{
+				// Update the game hud text
+				std::stringstream ssAmmo;
+				std::stringstream ssScore;
+				std::stringstream ssHighScore;
+				std::stringstream ssWave;
+				std::stringstream ssZombiesAlive;
+
+				// update the ammo text
+				ssAmmo << bulletsInMag << "/" << bulletsSpare;
+				ammoText.setString(ssAmmo.str());
+
+				// Update the score text
+				ssScore << "Score: " << score;
+				scoreText.setString(ssScore.str());
+
+				// Update the high score
+				ssHighScore << "High score: " << hiScore;
+				highScoreText.setString(ssHighScore.str());
+
+				// Update the wave
+				ssWave << "Wave: " << wave;
+				waveNumberText.setString(ssWave.str());
+
+				// Update the high score text
+				ssZombiesAlive << "Zombies: " << numZombiesAlive;
+				zombiesRemainingText.setString(ssZombiesAlive.str());
+
+				frameSinceLastHUDUpdate = 0;
 			}
 		}
 

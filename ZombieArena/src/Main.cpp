@@ -374,31 +374,43 @@ int main()
 		{
 			if (event.key.code == sf::Keyboard::Num1)
 			{
+				// increase rate of fire
+				fireRate++;
 				state = State::PLAYING;
 			}
 			
 			if (event.key.code == sf::Keyboard::Num2)
 			{
+				// increase the mag size
+				magSize += magSize;
 				state = State::PLAYING;
 			}
 			
 			if (event.key.code == sf::Keyboard::Num3)
 			{
+				// increase the players health
+				player.upgradeHealth();
 				state = State::PLAYING;
 			}
 			
 			if (event.key.code == sf::Keyboard::Num4)
 			{
+				// Increase the player speed
+				player.upgradeSpeed();
 				state = State::PLAYING;
 			}
 			
 			if (event.key.code == sf::Keyboard::Num5)
 			{
+				// Upgrade the health pickup
+				healthPickup.upgrade();
 				state = State::PLAYING;
 			}
 			
 			if (event.key.code == sf::Keyboard::Num6)
 			{
+				// upgrade the ammo pickups
+				ammoPickup.upgrade();
 				state = State::PLAYING;
 			}
 

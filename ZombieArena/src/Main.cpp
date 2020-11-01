@@ -1,5 +1,6 @@
 #include <fstream>
 #include <sstream>
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include "Bullet/Bullet.h"
 #include "Main.h"
@@ -197,6 +198,49 @@ int main()
 
 	// How often (in frames) should the hud be updated?
 	int fpsMeasurementFrameInterval{ 1000 };
+
+	// Preparing the sounds
+	// Prepare the hit sound
+	sf::SoundBuffer hitBuffer;
+	hitBuffer.loadFromFile("assets/sounds/hit.wav");
+	sf::Sound hit;
+	hit.setBuffer(hitBuffer);
+
+	// Prepare the splat sound
+	sf::SoundBuffer splatBuffer;
+	splatBuffer.loadFromFile("assets/sounds/shoot.wav");
+	sf::Sound splat;
+	splat.setBuffer(splatBuffer);
+
+	// Prepare the shooting sound
+	sf::SoundBuffer shootBuffer;
+	shootBuffer.loadFromFile("assets/sounds/shoot.wav");
+	sf::Sound shoot;
+	shoot.setBuffer(shootBuffer);
+
+	// Prepare the reload sound
+	sf::SoundBuffer reloadBuffer;
+	reloadBuffer.loadFromFile("assets/sounds/reload.wav");
+	sf::Sound reload;
+	reload.setBuffer(reloadBuffer);
+
+	// Prepare the failed reload sound
+	sf::SoundBuffer reloadFailedBufer;
+	reloadFailedBufer.loadFromFile("assets/sounds/reload_failed.wav");
+	sf::Sound reloadFailed;
+	reloadFailed.setBuffer(reloadFailedBufer);
+
+	// Prepare the powerup sound
+	sf::SoundBuffer powerupBuffer;
+	powerupBuffer.loadFromFile("assets/sounds/powerup.wav");
+	sf::Sound powerup;
+	powerup.setBuffer(powerupBuffer);
+
+	// Prepare the pickup sound
+	sf::SoundBuffer pickupBuffer;
+	pickupBuffer.loadFromFile("assets/sounds/pickup.wav");
+	sf::Sound pickup;
+	pickup.setBuffer(pickupBuffer);
 
 	// Our main game loop
 	while (window.isOpen())

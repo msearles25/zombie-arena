@@ -588,21 +588,37 @@ int main()
 
 			// Draw the crosshair
 			window.draw(crosshairSprite);
+
+			// Switch to the HUD view
+			window.setView(hudView);
+
+			// Draw all the HUD elements
+			window.draw(ammoIconSprite);
+			window.draw(ammoText);
+			window.draw(scoreText);
+			window.draw(highScoreText);
+			window.draw(healthBar);
+			window.draw(waveNumberText);
+			window.draw(zombiesRemainingText);
 		}
 		
 		if (state == State::LEVELING_UP)
 		{
-
+			window.draw(gameOverSprite);
+			window.draw(levelUpText);
 		}
 		
 		if (state == State::PAUSED)
 		{
-
+			window.draw(pausedText);
 		}
 		
 		if (state == State::GAME_OVER)
 		{
-
+			window.draw(gameOverSprite);
+			window.draw(gameOverText);
+			window.draw(scoreText);
+			window.draw(highScoreText);
 		}
 
 		window.display();

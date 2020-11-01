@@ -1,3 +1,4 @@
+#include <sstream>
 #include <SFML/Graphics.hpp>
 #include "Bullet/Bullet.h"
 #include "Main.h"
@@ -82,6 +83,104 @@ int main()
 	// Scores
 	int score{ 0 };
 	int hiScore{ 0 };
+
+	// hud
+	// For the home/game over screens
+	sf::Sprite gameOverSprite;
+	sf::Texture gameOverTexture{ TextureHolder::GetTexture("assets/graphics/background.png") };
+	gameOverSprite.setTexture(gameOverTexture);
+	gameOverSprite.setPosition(0, 0);
+
+	// Create the view for the hud
+	sf::View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
+
+	// Create a sprite for the ammo indicator
+	sf::Sprite ammoIconSprite;
+	sf::Texture ammoIconTexture{ TextureHolder::GetTexture("assets/graphics/amm_icon.png") };
+	ammoIconSprite.setTexture(ammoIconTexture);
+	ammoIconSprite.setPosition(20, 980);
+
+	// Load the font
+	sf::Font font;
+	font.loadFromFile("assets/fonts/zombiecontrol.ttf");
+
+	// Game is paused
+	sf::Text pausedText;
+	pausedText.setFont(font);
+	pausedText.setCharacterSize(155);
+	pausedText.setFillColor(sf::Color::White);
+	pausedText.setPosition(400, 400);
+	pausedText.setString("Press Enter\nto continue.");
+
+	// Game over
+	sf::Text gameOverText;
+	gameOverText.setFont(font);
+	gameOverText.setCharacterSize(125);
+	gameOverText.setFillColor(sf::Color::White);
+	gameOverText.setPosition(250, 850);
+	gameOverText.setString("Press Enter to play");
+
+	// Leveling up
+	sf::Text levelUpText;
+	levelUpText.setFont(font);
+	levelUpText.setCharacterSize(80);
+	levelUpText.setFillColor(sf::Color::White);
+	levelUpText.setPosition(150, 250);
+	std::stringstream levelUpStream;
+	levelUpStream
+		<< "1. Increased rate of fire"
+		<< "\n2. Increased mag size(next reload)"
+		<< "\n3. Increased max health"
+		<< "\n4. Increased run speed"
+		<< "\n5. More Frequent and increased health pickups"
+		<< "\n6. More Frequent and increased ammo pickups";
+	levelUpText.setString(levelUpStream.str());
+
+	// Ammo
+	sf::Text ammoText;
+	ammoText.setFont(font);
+	ammoText.setCharacterSize(55);
+	ammoText.setFillColor(sf::Color::White);
+	ammoText.setPosition(200, 980);
+
+	// Score
+	sf::Text scoreText;
+	scoreText.setFont(font);
+	scoreText.setCharacterSize(55);
+	scoreText.setFillColor(sf::Color::White);
+	scoreText.setPosition(20, 0);
+
+	// High score
+	sf::Text highScoreText;
+	highScoreText.setFont(font);
+	highScoreText.setCharacterSize(55);
+	highScoreText.setFillColor(sf::Color::White);
+	highScoreText.setPosition(1400, 0);
+	std::stringstream s;
+	s << "High score: " << hiScore;
+	highScoreText.setString(s.str());
+
+	// Zombies still remaining
+	sf::Text zombiesRemainingText;
+	zombiesRemainingText.setFont(font);
+	zombiesRemainingText.setCharacterSize(55);
+	zombiesRemainingText.setFillColor(sf::Color::White);
+	zombiesRemainingText.setPosition(1500, 980);
+	zombiesRemainingText.setString("Zombies: 100");
+
+	// Wave Number
+	int wave{ 0 };
+	sf::Text waveNumberText;
+	waveNumberText.setFont(font);
+	waveNumberText.setCharacterSize(55);
+	waveNumberText.setFillColor(sf::Color::White);
+	waveNumberText.setPosition(1250, 980);
+	waveNumberText.setString("Wave: 0");
+
+	// Health bar
+	sf::RectangleShape healthBar;
+	healthBar.setFillColor(sf::Color::Red);
+	healthBar.setPosition(450, 980);
 
 	// Our main game loop
 	while (window.isOpen())
@@ -367,6 +466,7 @@ int main()
 			}
 
 			// Has the player been hit by a zombie?
+			// Game is freezing?
 			for (int i{ 0 }; i < numZombies; i++)
 			{
 				if (player.getPosition().intersects(zombies[i].getPosition()) && zombies[i].isAlive())
@@ -381,6 +481,18 @@ int main()
 						state = State::GAME_OVER;
 					}
 				}
+			}
+
+			// Has the player touched the health pickup?
+			if (player.getPosition().intersects(healthPickup.getPosition()) && healthPickup.isSpawned())
+			{
+				player.increaseHealthLevel(healthPickup.gotIt());
+			}
+
+			// Has the player touched the ammo pickkup?
+			if (player.getPosition().intersects(ammoPickup.getPosition()) && ammoPickup.isSpawned())
+			{
+				bulletsSpare += ammoPickup.gotIt();
 			}
 		}
 

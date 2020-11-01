@@ -2,8 +2,7 @@
 
 Bullet::Bullet()
 {
-	m_BulletShape.setSize(sf::Vector2f(10, 20));
-	m_BulletShape.setFillColor(sf::Color::Red);
+	m_BulletShape.setSize(sf::Vector2f(2, 2));
 }
 
 void Bullet::shoot(float startX, float startY, float targetX, float targetY)

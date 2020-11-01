@@ -14,7 +14,7 @@ private:
 	bool m_InFlight{ false };
 
 	// Speed at which the bullet will travel
-	float m_BulletSpeed{ 1000 };
+	float m_BulletSpeed{ 1 };
 
 	// What fraction of 1 pixel does the bullet travel, 
 	// horizontally and vertically each frame?

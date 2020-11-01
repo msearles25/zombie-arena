@@ -270,6 +270,18 @@ int main()
 				else if (event.key.code == sf::Keyboard::Return && state == State::GAME_OVER) // start a new game in GAME_OVER state
 				{
 					state = State::LEVELING_UP;
+					wave = 0;
+					score = 0;
+
+					// Prepare the gun and ammo for the next game
+					currentBullet = 0;
+					bulletsSpare = 24;
+					bulletsInMag = 6;
+					magSize = 6;
+					fireRate = 1;
+
+					// Reset our players state
+					player.resetPlayerStats();
 				}
 
 				if (state == State::PLAYING)

@@ -1,3 +1,4 @@
+#include <fstream>
 #include <sstream>
 #include <SFML/Graphics.hpp>
 #include "Bullet/Bullet.h"
@@ -149,6 +150,15 @@ int main()
 	scoreText.setCharacterSize(55);
 	scoreText.setFillColor(sf::Color::White);
 	scoreText.setPosition(20, 0);
+
+	// Load the high score from the text file
+	std::ifstream inputFile("gamedata/scores.txt");
+	if (inputFile.is_open())
+	{
+		// >> is reading the data
+		inputFile >> hiScore;
+		inputFile.close();
+	}
 
 	// High score
 	sf::Text highScoreText;
@@ -485,6 +495,11 @@ int main()
 					if (player.getHealth() <= 0)
 					{
 						state = State::GAME_OVER;
+						
+						// writing our high score to the file
+						std::ofstream outputFile("gamedata/scores.txt");
+						outputFile << hiScore;
+						outputFile.close();
 					}
 				}
 			}

@@ -98,7 +98,7 @@ int main()
 
 	// Create a sprite for the ammo indicator
 	sf::Sprite ammoIconSprite;
-	sf::Texture ammoIconTexture{ TextureHolder::GetTexture("assets/graphics/amm_icon.png") };
+	sf::Texture ammoIconTexture{ TextureHolder::GetTexture("assets/graphics/ammo_icon.png") };
 	ammoIconSprite.setTexture(ammoIconTexture);
 	ammoIconSprite.setPosition(20, 980);
 
@@ -202,43 +202,43 @@ int main()
 	// Preparing the sounds
 	// Prepare the hit sound
 	sf::SoundBuffer hitBuffer;
-	hitBuffer.loadFromFile("assets/sounds/hit.wav");
+	hitBuffer.loadFromFile("assets/sound/hit.wav");
 	sf::Sound hit;
 	hit.setBuffer(hitBuffer);
 
 	// Prepare the splat sound
 	sf::SoundBuffer splatBuffer;
-	splatBuffer.loadFromFile("assets/sounds/shoot.wav");
+	splatBuffer.loadFromFile("assets/sound/shoot.wav");
 	sf::Sound splat;
 	splat.setBuffer(splatBuffer);
 
 	// Prepare the shooting sound
 	sf::SoundBuffer shootBuffer;
-	shootBuffer.loadFromFile("assets/sounds/shoot.wav");
+	shootBuffer.loadFromFile("assets/sound/shoot.wav");
 	sf::Sound shoot;
 	shoot.setBuffer(shootBuffer);
 
 	// Prepare the reload sound
 	sf::SoundBuffer reloadBuffer;
-	reloadBuffer.loadFromFile("assets/sounds/reload.wav");
+	reloadBuffer.loadFromFile("assets/sound/reload.wav");
 	sf::Sound reload;
 	reload.setBuffer(reloadBuffer);
 
 	// Prepare the failed reload sound
 	sf::SoundBuffer reloadFailedBufer;
-	reloadFailedBufer.loadFromFile("assets/sounds/reload_failed.wav");
+	reloadFailedBufer.loadFromFile("assets/sound/reload_failed.wav");
 	sf::Sound reloadFailed;
 	reloadFailed.setBuffer(reloadFailedBufer);
 
 	// Prepare the powerup sound
 	sf::SoundBuffer powerupBuffer;
-	powerupBuffer.loadFromFile("assets/sounds/powerup.wav");
+	powerupBuffer.loadFromFile("assets/sound/powerup.wav");
 	sf::Sound powerup;
 	powerup.setBuffer(powerupBuffer);
 
 	// Prepare the pickup sound
 	sf::SoundBuffer pickupBuffer;
-	pickupBuffer.loadFromFile("assets/sounds/pickup.wav");
+	pickupBuffer.loadFromFile("assets/sound/pickup.wav");
 	sf::Sound pickup;
 	pickup.setBuffer(pickupBuffer);
 
@@ -294,16 +294,18 @@ int main()
 							// Plenty of bullets to reload
 							bulletsInMag = magSize;
 							bulletsSpare -= magSize;
+							reload.play();
 						}
 						else if (bulletsSpare > 0)
 						{
 							// only a few bullets
 							bulletsInMag = bulletsSpare;
 							bulletsSpare = 0;
+							reload.play();
 						}
 						else
 						{
-
+							reloadFailed.play();
 						}
 					}
 				}
@@ -375,6 +377,8 @@ int main()
 						currentBullet = 0;
 					}
 					lastPressed = gameTimeTotal;
+
+					shoot.play();
 
 					bulletsInMag--;
 				}
@@ -548,20 +552,21 @@ int main()
 									state = State::LEVELING_UP;
 								}
 							}
+
+							splat.play();
 						}
 					}
 				}
 			}
 
 			// Has the player been hit by a zombie?
-			// Game is freezing?
 			for (int i{ 0 }; i < numZombies; i++)
 			{
 				if (player.getPosition().intersects(zombies[i].getPosition()) && zombies[i].isAlive())
 				{
 					if (player.hit(gameTimeTotal))
 					{
-
+						hit.play();
 					}
 
 					if (player.getHealth() <= 0)
@@ -580,12 +585,14 @@ int main()
 			if (player.getPosition().intersects(healthPickup.getPosition()) && healthPickup.isSpawned())
 			{
 				player.increaseHealthLevel(healthPickup.gotIt());
+				pickup.play();
 			}
 
 			// Has the player touched the ammo pickkup?
 			if (player.getPosition().intersects(ammoPickup.getPosition()) && ammoPickup.isSpawned())
 			{
 				bulletsSpare += ammoPickup.gotIt();
+				reload.play();
 			}
 
 			// hud updates
